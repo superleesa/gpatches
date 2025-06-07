@@ -1,16 +1,36 @@
 [project]
-name = "graph_diff"
+name = "gpatches"
 version = "0.1.0"
 description = "A tiny tool to diff two graphs"
 readme = "README.md"
 requires-python = ">=3.11"
+authors = [
+    {name = "Satoshi Kashima", email = "6world4trigger@example.com"}
+]
+keywords = ["graph", "diff", "comparison", "networkx"]
+license = {text = "MIT"}
 dependencies = [
     "networkx>=3.5",
     "pydantic>=2.11.5",
 ]
 
+[project.urls]
+"Source Code" = "https://github.com/superleesa/gpatches"
+
 [dependency-groups]
 dev = [
     "mypy>=1.16.0",
+    "pytest>=8.4.0",
     "ruff>=0.11.13",
 ]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.mypy]
+files = ["gpatches"]
+ignore_missing_imports = true
+
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"

@@ -1,7 +1,7 @@
 import pytest
 
-from graph_diff import diff_graphs, ParamDiff, NodeDiff
-from graph_diff import GraphDiff
+from graphpatch import diff_graphs, ParamPatch, NodePatch
+from graphpatch import GraphPatch
 from tests.helpers import create_graph_with_data
 
 
@@ -12,7 +12,7 @@ from tests.helpers import create_graph_with_data
             # Added and removed nodes
             create_graph_with_data([("A", {"x": 1}), ("B", {"y": 2})], directed=True),
             create_graph_with_data([("B", {"y": 2}), ("C", {"z": 3})], directed=True),
-            GraphDiff(
+            GraphPatch(
                 added_nodes={"C": {"z": 3}},
                 removed_nodes={"A": {"x": 1}},
                 changed_nodes={},
@@ -29,7 +29,7 @@ from tests.helpers import create_graph_with_data
             create_graph_with_data(
                 [("A", {"foo": 1}), ("B", {"bar": 2})], directed=True
             ),
-            GraphDiff(
+            GraphPatch(
                 added_nodes={},
                 removed_nodes={},
                 changed_nodes={},
@@ -42,15 +42,15 @@ from tests.helpers import create_graph_with_data
             # Changed node params
             create_graph_with_data([("A", {"x": 1, "y": 2})], directed=True),
             create_graph_with_data([("A", {"x": 1, "y": 3, "z": 4})], directed=True),
-            GraphDiff(
+            GraphPatch(
                 added_nodes={},
                 removed_nodes={},
                 changed_nodes={
-                    "A": NodeDiff(
+                    "A": NodePatch(
                         added_params={"z": 4},
                         removed_params={},
                         changed_params={
-                            "y": ParamDiff(old_param_value=2, new_param_value=3)
+                            "y": ParamPatch(old_param_value=2, new_param_value=3)
                         },
                     )
                 },
@@ -68,7 +68,7 @@ from tests.helpers import create_graph_with_data
             create_graph_with_data(
                 [("A", {}), ("B", {})], edges=[("B", "A", {"weight": 2})], directed=True
             ),
-            GraphDiff(
+            GraphPatch(
                 added_nodes={},
                 removed_nodes={},
                 changed_nodes={},
@@ -85,7 +85,7 @@ from tests.helpers import create_graph_with_data
             create_graph_with_data(
                 [("A", {}), ("B", {})], edges=[("A", "B", {"weight": 5})], directed=True
             ),
-            GraphDiff(
+            GraphPatch(
                 added_nodes={},
                 removed_nodes={},
                 changed_nodes={},

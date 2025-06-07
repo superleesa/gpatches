@@ -18,3 +18,7 @@ dev = [
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+
+[tool.mypy]
+files = ["graph_diff"]
+ignore_missing_imports = true

@@ -16,7 +16,7 @@ class NodePatch(BaseModel):
     changed_params: dict[str, ParamPatch]
 
 
-class GraphPatch(BaseModel):
+class graph_patch(BaseModel):
     # TODO: support edge changes
 
     added_nodes: dict[str, dict[str, Any]]
@@ -53,14 +53,14 @@ def diff_node(
     )
 
 
-def diff_graphs(from_graph: Graph, to_graph: Graph) -> GraphPatch:
+def diff_graphs(from_graph: Graph, to_graph: Graph) -> graph_patch:
     """
     NOTE: Only supports directed graphs for now.
     """
     if not from_graph.is_directed() or not to_graph.is_directed():
         raise ValueError("Both from_graph and to_graph must be directed graphs.")
 
-    return GraphPatch(
+    return graph_patch(
         removed_nodes={
             k: from_graph.nodes[k] for k in set(from_graph.nodes) - set(to_graph.nodes)
         },

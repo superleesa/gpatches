@@ -1,5 +1,5 @@
 [project]
-name = "graphpatch"
+name = "graph_patch"
 version = "0.1.0"
 description = "A tiny tool to diff two graphs"
 readme = "README.md"
@@ -15,7 +15,7 @@ dependencies = [
 ]
 
 [project.urls]
-"Source Code" = "https://github.com/superleesa/graphpatch"
+"Source Code" = "https://github.com/superleesa/graph_patch"
 
 [dependency-groups]
 dev = [
@@ -28,7 +28,7 @@ dev = [
 testpaths = ["tests"]
 
 [tool.mypy]
-files = ["graphpatch"]
+files = ["graph_patch"]
 ignore_missing_imports = true
 
 [build-system]

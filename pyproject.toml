@@ -1,7 +1,7 @@
 [project]
-name = "graph-diffing"
+name = "graph_diff"
 version = "0.1.0"
-description = "Add your description here"
+description = "A tiny tool to diff two graphs"
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [

@@ -4,10 +4,18 @@ version = "0.1.0"
 description = "A tiny tool to diff two graphs"
 readme = "README.md"
 requires-python = ">=3.11"
+authors = [
+    {name = "Satoshi Kashima", email = "6world4trigger@example.com"}
+]
+keywords = ["graph", "diff", "comparison", "networkx"]
+license = {text = "MIT"}
 dependencies = [
     "networkx>=3.5",
     "pydantic>=2.11.5",
 ]
+
+[project.urls]
+"Source Code" = "https://github.com/superleesa/graph_diff"
 
 [dependency-groups]
 dev = [
@@ -22,3 +30,7 @@ testpaths = ["tests"]
 [tool.mypy]
 files = ["graph_diff"]
 ignore_missing_imports = true
+
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
